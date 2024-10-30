@@ -37,7 +37,7 @@ namespace Prg282Project
             Label DeleteStudent;
             Label SummaryReport;
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(StudentEntryForm));
-            dataGridView1 = new DataGridView();
+            dgvDisplay = new DataGridView();
             contextMenuStrip1 = new ContextMenuStrip(components);
             AddStudentButton = new Button();
             ViewStudentsButton = new Button();
@@ -62,7 +62,7 @@ namespace Prg282Project
             UpdateStudents = new Label();
             DeleteStudent = new Label();
             SummaryReport = new Label();
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)dgvDisplay).BeginInit();
             groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox3).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
@@ -120,15 +120,16 @@ namespace Prg282Project
             SummaryReport.Tag = "";
             SummaryReport.Text = "Student Summary";
             // 
-            // dataGridView1
+            // dgvDisplay
             // 
-            dataGridView1.BackgroundColor = SystemColors.ButtonShadow;
-            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Location = new Point(12, 98);
-            dataGridView1.Name = "dataGridView1";
-            dataGridView1.RowTemplate.Height = 25;
-            dataGridView1.Size = new Size(993, 274);
-            dataGridView1.TabIndex = 0;
+            dgvDisplay.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dgvDisplay.BackgroundColor = SystemColors.ButtonShadow;
+            dgvDisplay.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvDisplay.Location = new Point(12, 98);
+            dgvDisplay.Name = "dgvDisplay";
+            dgvDisplay.RowTemplate.Height = 25;
+            dgvDisplay.Size = new Size(993, 274);
+            dgvDisplay.TabIndex = 0;
             // 
             // contextMenuStrip1
             // 
@@ -333,12 +334,13 @@ namespace Prg282Project
             ClientSize = new Size(1044, 539);
             Controls.Add(ExitButton);
             Controls.Add(pictureBox1);
-            Controls.Add(dataGridView1);
+            Controls.Add(dgvDisplay);
             Controls.Add(groupBox1);
             Controls.Add(pictureBox2);
             Name = "StudentEntryForm";
             Text = "Student Entry Form";
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
+            Load += StudentEntryForm_Load;
+            ((System.ComponentModel.ISupportInitialize)dgvDisplay).EndInit();
             groupBox1.ResumeLayout(false);
             groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox3).EndInit();
@@ -349,7 +351,7 @@ namespace Prg282Project
 
         #endregion
 
-        private DataGridView dataGridView1;
+        private DataGridView dgvDisplay;
         private ContextMenuStrip contextMenuStrip1;
         private Button AddStudentButton;
         private Button ViewStudentsButton;
