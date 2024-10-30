@@ -5,15 +5,19 @@ using System.Text;
 using System.Threading.Tasks;
 using System.IO;
 
+
 namespace Prg282Project
 {
     public partial class StudentEntryForm : Form
     {
+
+
         public BindingSource bs = new BindingSource();
 
         public StudentEntryForm()
         {
             InitializeComponent();
+
             this.ControlBox = false; // Removes top exit, minimize and maximize
             this.StartPosition = FormStartPosition.CenterScreen;
 
@@ -33,6 +37,21 @@ namespace Prg282Project
             bs.DataSource = students;
             dgvDisplay.DataSource = bs;
         }
+
+        private void GenerateSummaryButton_Click(object sender, EventArgs e)
+        {
+            FileHandler fh = new FileHandler();
+            
+            fh.AmmountOfStudents();
+            fh.AverageStudentAge();
+            fh.GenerateSummary();
+
+            AverageAgeTextBox.Text = fh.averageStudentsAge.ToString();
+            StudentsInListTextBox.Text = fh.totalStudents.ToString();
+
+           
+        }
+
 
     }
 }

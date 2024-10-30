@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.IO;
-
+using System.DirectoryServices;
 
 namespace Prg282Project
 {
@@ -13,6 +13,8 @@ namespace Prg282Project
         public FileHandler() { }
 
         public string filename = @"students.txt";
+        public int totalStudents = 0;
+        public int averageStudentsAge = 0;
         public static List<Student> files = new List<Student>();
 
         /// <summary>
@@ -63,6 +65,72 @@ namespace Prg282Project
                 }
             }
             return files;
+        }
+
+
+
+        /// <summary>
+        /// Method to generate ammount of students in students.txt
+        /// </summary>
+        /// 
+        public void AmmountOfStudents()
+        { 
+            // Read students file
+            if(File.Exists(filename))
+            {
+                using(StreamReader reader = new StreamReader(filename))
+                {
+                    string txt;
+                    while ((txt = reader.ReadLine()) != null)
+                    {
+                        totalStudents++;
+                    }
+                }
+            }
+        }
+
+        /// <summary>
+        /// Method to generate Average Age of students in students.txt
+        /// </summary>
+        /// 
+        public void AverageStudentAge()
+        {
+            
+            string CurrentLine;
+            using(StreamReader reader = new StreamReader(filename))
+            {
+                reader.ReadLine();
+                while ((CurrentLine = reader.ReadLine()) != null)
+                {
+                    
+                    string[] Students = CurrentLine.Split(',');
+                    int age = int.Parse(Students[2]);
+                    averageStudentsAge += age;
+
+                }
+                averageStudentsAge = averageStudentsAge / totalStudents;
+            }
+        }
+
+        /// <summary>
+        /// Method to generate summary.txt
+        /// </summary>
+
+        public void GenerateSummary()
+        {
+            string summaryFilename = @"summary.txt";
+            //Create File
+            if (!File.Exists(summaryFilename))
+            {
+                File.Create(summaryFilename);
+            }
+            else
+            {
+                using(StreamWriter writer = new StreamWriter(summaryFilename))
+                {
+                    writer.Write($"Amount of students: {totalStudents}, Average Age: {averageStudentsAge}, Date: {DateTime.Now:yyyy-MM-dd}");
+                }
+            }
         }
     }
 }

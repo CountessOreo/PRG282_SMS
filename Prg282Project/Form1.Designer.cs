@@ -35,7 +35,8 @@ namespace Prg282Project
             Label label1;
             Label UpdateStudents;
             Label DeleteStudent;
-            Label SummaryReport;
+            Label label2;
+            Label label3;
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(StudentEntryForm));
             dgvDisplay = new DataGridView();
             contextMenuStrip1 = new ContextMenuStrip(components);
@@ -49,6 +50,8 @@ namespace Prg282Project
             AgeLabel = new Label();
             IDLabel = new Label();
             groupBox1 = new GroupBox();
+            StudentsInListTextBox = new TextBox();
+            AverageAgeTextBox = new TextBox();
             textBox4 = new TextBox();
             textBox3 = new TextBox();
             textBox2 = new TextBox();
@@ -61,7 +64,8 @@ namespace Prg282Project
             label1 = new Label();
             UpdateStudents = new Label();
             DeleteStudent = new Label();
-            SummaryReport = new Label();
+            label2 = new Label();
+            label3 = new Label();
             ((System.ComponentModel.ISupportInitialize)dgvDisplay).BeginInit();
             groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox3).BeginInit();
@@ -109,16 +113,27 @@ namespace Prg282Project
             DeleteStudent.TabIndex = 8;
             DeleteStudent.Tag = "";
             // 
-            // SummaryReport
+            // label2
             // 
-            SummaryReport.AutoEllipsis = true;
-            SummaryReport.AutoSize = true;
-            SummaryReport.Location = new Point(506, 68);
-            SummaryReport.Name = "SummaryReport";
-            SummaryReport.Size = new Size(102, 15);
-            SummaryReport.TabIndex = 10;
-            SummaryReport.Tag = "";
-            SummaryReport.Text = "Student Summary";
+            label2.AutoEllipsis = true;
+            label2.AutoSize = true;
+            label2.Location = new Point(481, 42);
+            label2.Name = "label2";
+            label2.Size = new Size(74, 15);
+            label2.TabIndex = 31;
+            label2.Tag = "";
+            label2.Text = "Average Age";
+            // 
+            // label3
+            // 
+            label3.AutoEllipsis = true;
+            label3.AutoSize = true;
+            label3.Location = new Point(572, 42);
+            label3.Name = "label3";
+            label3.Size = new Size(87, 15);
+            label3.TabIndex = 32;
+            label3.Tag = "";
+            label3.Text = "Students in List";
             // 
             // dgvDisplay
             // 
@@ -179,12 +194,13 @@ namespace Prg282Project
             // GenerateSummaryButton
             // 
             GenerateSummaryButton.ForeColor = SystemColors.ActiveCaptionText;
-            GenerateSummaryButton.Location = new Point(506, 86);
+            GenerateSummaryButton.Location = new Point(517, 98);
             GenerateSummaryButton.Name = "GenerateSummaryButton";
             GenerateSummaryButton.Size = new Size(102, 23);
             GenerateSummaryButton.TabIndex = 9;
             GenerateSummaryButton.Text = "Generate";
             GenerateSummaryButton.UseVisualStyleBackColor = true;
+            GenerateSummaryButton.Click += GenerateSummaryButton_Click;
             // 
             // NameLabel
             // 
@@ -226,6 +242,10 @@ namespace Prg282Project
             // groupBox1
             // 
             groupBox1.BackColor = Color.Transparent;
+            groupBox1.Controls.Add(label3);
+            groupBox1.Controls.Add(label2);
+            groupBox1.Controls.Add(StudentsInListTextBox);
+            groupBox1.Controls.Add(AverageAgeTextBox);
             groupBox1.Controls.Add(textBox4);
             groupBox1.Controls.Add(textBox3);
             groupBox1.Controls.Add(textBox2);
@@ -234,7 +254,6 @@ namespace Prg282Project
             groupBox1.Controls.Add(AgeLabel);
             groupBox1.Controls.Add(SurnameLabel);
             groupBox1.Controls.Add(NameLabel);
-            groupBox1.Controls.Add(SummaryReport);
             groupBox1.Controls.Add(GenerateSummaryButton);
             groupBox1.Controls.Add(DeleteStudent);
             groupBox1.Controls.Add(DeleteStudentDetailsButton);
@@ -252,6 +271,22 @@ namespace Prg282Project
             groupBox1.TabIndex = 24;
             groupBox1.TabStop = false;
             groupBox1.Text = "Student Data";
+            // 
+            // StudentsInListTextBox
+            // 
+            StudentsInListTextBox.Location = new Point(572, 60);
+            StudentsInListTextBox.Name = "StudentsInListTextBox";
+            StudentsInListTextBox.Size = new Size(100, 23);
+            StudentsInListTextBox.TabIndex = 30;
+            
+            // 
+            // AverageAgeTextBox
+            // 
+            AverageAgeTextBox.Location = new Point(466, 60);
+            AverageAgeTextBox.Name = "AverageAgeTextBox";
+            AverageAgeTextBox.Size = new Size(100, 23);
+            AverageAgeTextBox.TabIndex = 29;
+        
             // 
             // textBox4
             // 
@@ -371,5 +406,7 @@ namespace Prg282Project
         private TextBox textBox1;
         private Button ExitButton;
         private PictureBox pictureBox2;
+        private TextBox StudentsInListTextBox;
+        public TextBox AverageAgeTextBox;
     }
 }

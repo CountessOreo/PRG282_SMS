@@ -12,6 +12,7 @@ namespace Prg282Project
             // see https://aka.ms/applicationconfiguration.
             ApplicationConfiguration.Initialize();
             Application.Run(new StudentEntryForm());
+            
         }
     }
 }
