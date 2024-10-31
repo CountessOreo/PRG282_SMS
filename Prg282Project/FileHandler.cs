@@ -12,8 +12,6 @@ namespace Prg282Project
     {
         public string filename = @"students.txt";
         public string summaryFilename = @"summary.txt";
-        public int totalStudents = 0;
-        public int averageStudentsAge = 0;
         public static List<Student> studentTextList = new List<Student>();
 
         /// <summary>
@@ -79,7 +77,7 @@ namespace Prg282Project
         /// <summary>
         /// Generates summary.txt
         /// </summary>
-        public void GenerateSummary()
+        public void GenerateSummary(DataHandler dh)
         {
             //Create File
             if (!File.Exists(summaryFilename))
@@ -88,9 +86,11 @@ namespace Prg282Project
             }
             else
             {
+                
+
                 using(StreamWriter writer = new StreamWriter(summaryFilename))
                 {
-                    writer.Write($"Amount of students: {totalStudents}, Average Age: {averageStudentsAge}, Date: {DateTime.Now:yyyy-MM-dd}");
+                    writer.Write($"Amount of students: {dh.totalStudents}, Average Age: {dh.averageStudentsAge}, Date: {DateTime.Now:yyyy-MM-dd}");
                 }
             }
         }

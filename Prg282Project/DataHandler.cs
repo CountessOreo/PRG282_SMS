@@ -9,8 +9,9 @@ namespace Prg282Project
     internal class DataHandler
     {
         public string filename = @"students.txt";
-        public int totalStudents = 0;
-        public int averageStudentsAge = 0;
+        public int totalStudents;
+        public int averageStudentsAge;
+          
 
         /// <summary>
         /// Generates amount of students in students.txt
@@ -20,6 +21,7 @@ namespace Prg282Project
             // Read students file
             if (File.Exists(filename))
             {
+                
                 using (StreamReader reader = new StreamReader(filename))
                 {
                     string txt;
@@ -50,6 +52,12 @@ namespace Prg282Project
                 }
                 averageStudentsAge = averageStudentsAge / totalStudents;
             }
+        }
+
+        public void ResetCounters()
+        {
+            averageStudentsAge = 0;
+            totalStudents = 0;
         }
     }
     

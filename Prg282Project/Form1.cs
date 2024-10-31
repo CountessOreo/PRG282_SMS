@@ -38,10 +38,18 @@ namespace Prg282Project
         }
 
         private void GenerateSummaryButton_Click(object sender, EventArgs e)
-        { 
+        {
+            //Resets Count.
+            dh.ResetCounters();
+
+            //Calculates count
             dh.AmountOfStudents();
             dh.AverageStudentAge();
-            fh.GenerateSummary();
+
+            //Generate Count in summary
+            fh.GenerateSummary(dh);
+
+
 
             AverageAgeTextBox.Text = dh.averageStudentsAge.ToString();
             StudentsInListTextBox.Text = dh.totalStudents.ToString();
