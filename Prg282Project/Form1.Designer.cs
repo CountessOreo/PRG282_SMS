@@ -52,10 +52,10 @@ namespace Prg282Project
             groupBox1 = new GroupBox();
             StudentsInListTextBox = new TextBox();
             AverageAgeTextBox = new TextBox();
-            textBox4 = new TextBox();
-            textBox3 = new TextBox();
-            textBox2 = new TextBox();
-            textBox1 = new TextBox();
+            txtCourse = new TextBox();
+            txtAge = new TextBox();
+            txtStudentName = new TextBox();
+            txtStudentID = new TextBox();
             pictureBox3 = new PictureBox();
             pictureBox1 = new PictureBox();
             ExitButton = new Button();
@@ -160,6 +160,7 @@ namespace Prg282Project
             AddStudentButton.TabIndex = 1;
             AddStudentButton.Text = "Add";
             AddStudentButton.UseVisualStyleBackColor = true;
+            AddStudentButton.Click += AddStudentButton_Click;
             // 
             // ViewStudentsButton
             // 
@@ -206,7 +207,7 @@ namespace Prg282Project
             // 
             NameLabel.AutoSize = true;
             NameLabel.ForeColor = SystemColors.ButtonFace;
-            NameLabel.Location = new Point(24, 42);
+            NameLabel.Location = new Point(131, 42);
             NameLabel.Name = "NameLabel";
             NameLabel.Size = new Size(39, 15);
             NameLabel.TabIndex = 16;
@@ -215,11 +216,11 @@ namespace Prg282Project
             // SurnameLabel
             // 
             SurnameLabel.AutoSize = true;
-            SurnameLabel.Location = new Point(130, 42);
+            SurnameLabel.Location = new Point(343, 42);
             SurnameLabel.Name = "SurnameLabel";
-            SurnameLabel.Size = new Size(54, 15);
+            SurnameLabel.Size = new Size(44, 15);
             SurnameLabel.TabIndex = 17;
-            SurnameLabel.Text = "Surname";
+            SurnameLabel.Text = "Course";
             // 
             // AgeLabel
             // 
@@ -233,7 +234,7 @@ namespace Prg282Project
             // IDLabel
             // 
             IDLabel.AutoSize = true;
-            IDLabel.Location = new Point(343, 42);
+            IDLabel.Location = new Point(24, 42);
             IDLabel.Name = "IDLabel";
             IDLabel.Size = new Size(18, 15);
             IDLabel.TabIndex = 19;
@@ -246,10 +247,10 @@ namespace Prg282Project
             groupBox1.Controls.Add(label2);
             groupBox1.Controls.Add(StudentsInListTextBox);
             groupBox1.Controls.Add(AverageAgeTextBox);
-            groupBox1.Controls.Add(textBox4);
-            groupBox1.Controls.Add(textBox3);
-            groupBox1.Controls.Add(textBox2);
-            groupBox1.Controls.Add(textBox1);
+            groupBox1.Controls.Add(txtCourse);
+            groupBox1.Controls.Add(txtAge);
+            groupBox1.Controls.Add(txtStudentName);
+            groupBox1.Controls.Add(txtStudentID);
             groupBox1.Controls.Add(IDLabel);
             groupBox1.Controls.Add(AgeLabel);
             groupBox1.Controls.Add(SurnameLabel);
@@ -278,7 +279,6 @@ namespace Prg282Project
             StudentsInListTextBox.Name = "StudentsInListTextBox";
             StudentsInListTextBox.Size = new Size(100, 23);
             StudentsInListTextBox.TabIndex = 30;
-            
             // 
             // AverageAgeTextBox
             // 
@@ -286,35 +286,34 @@ namespace Prg282Project
             AverageAgeTextBox.Name = "AverageAgeTextBox";
             AverageAgeTextBox.Size = new Size(100, 23);
             AverageAgeTextBox.TabIndex = 29;
-        
             // 
-            // textBox4
+            // txtCourse
             // 
-            textBox4.Location = new Point(343, 60);
-            textBox4.Name = "textBox4";
-            textBox4.Size = new Size(100, 23);
-            textBox4.TabIndex = 23;
+            txtCourse.Location = new Point(343, 60);
+            txtCourse.Name = "txtCourse";
+            txtCourse.Size = new Size(100, 23);
+            txtCourse.TabIndex = 23;
             // 
-            // textBox3
+            // txtAge
             // 
-            textBox3.Location = new Point(237, 60);
-            textBox3.Name = "textBox3";
-            textBox3.Size = new Size(100, 23);
-            textBox3.TabIndex = 22;
+            txtAge.Location = new Point(237, 60);
+            txtAge.Name = "txtAge";
+            txtAge.Size = new Size(100, 23);
+            txtAge.TabIndex = 22;
             // 
-            // textBox2
+            // txtStudentName
             // 
-            textBox2.Location = new Point(131, 60);
-            textBox2.Name = "textBox2";
-            textBox2.Size = new Size(100, 23);
-            textBox2.TabIndex = 21;
+            txtStudentName.Location = new Point(131, 60);
+            txtStudentName.Name = "txtStudentName";
+            txtStudentName.Size = new Size(100, 23);
+            txtStudentName.TabIndex = 21;
             // 
-            // textBox1
+            // txtStudentID
             // 
-            textBox1.Location = new Point(24, 60);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(100, 23);
-            textBox1.TabIndex = 20;
+            txtStudentID.Location = new Point(24, 60);
+            txtStudentID.Name = "txtStudentID";
+            txtStudentID.Size = new Size(100, 23);
+            txtStudentID.TabIndex = 20;
             // 
             // pictureBox3
             // 
@@ -400,10 +399,10 @@ namespace Prg282Project
         protected GroupBox groupBox1;
         private PictureBox pictureBox1;
         private PictureBox pictureBox3;
-        private TextBox textBox4;
-        private TextBox textBox3;
-        private TextBox textBox2;
-        private TextBox textBox1;
+        private TextBox txtCourse;
+        private TextBox txtAge;
+        private TextBox txtStudentName;
+        private TextBox txtStudentID;
         private Button ExitButton;
         private PictureBox pictureBox2;
         private TextBox StudentsInListTextBox;

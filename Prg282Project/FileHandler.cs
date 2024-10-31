@@ -10,21 +10,20 @@ namespace Prg282Project
 {
     internal class FileHandler
     {
-        public FileHandler() { }
-
         public string filename = @"students.txt";
+        public string summaryFilename = @"summary.txt";
         public int totalStudents = 0;
         public int averageStudentsAge = 0;
-        public static List<Student> files = new List<Student>();
+        public static List<Student> studentTextList = new List<Student>();
 
         /// <summary>
-        /// Initial creation of the students text file.
+        /// Checks if the student text file exists and creates it if not.
         /// </summary>
-        public void CreateStudentTextFile()
+        public List<Student> CreateStudentTextFile()
         {
             if (!File.Exists(filename))
             {
-                List<Student> students = new List<Student>
+                List<Student> initialStudents = new List<Student>
                 {
                     new Student(578003, "Hayley Treutens", 21, "BComp"),
                     new Student(577999, "Kyle Smith", 24, "BComp"),
@@ -37,88 +36,51 @@ namespace Prg282Project
                     new Student(579204, "Queen Elizabeth", 96, "BIT"),
                     new Student(529462, "Keanu Reeves", 60, "BIT"),
                 };
+                WriteStudentsToFile(initialStudents);
+            }
+            studentTextList = ReadStudentTextFile();
+            return studentTextList;
+        }
 
-                using (StreamWriter writer = new StreamWriter(filename))
+        /// <summary>
+        /// Writes a list of students to the student text file.
+        /// </summary>
+        public void WriteStudentsToFile(List<Student> students)
+        {
+            using (StreamWriter writer = new StreamWriter(filename))
+            {
+                foreach (Student student in students)
                 {
-                    foreach (Student student in students)
-                    {
-                        writer.WriteLine($"{student.StudentID},{student.StudentName},{student.StudentAge},{student.Course}");
-                    }
+                    writer.WriteLine($"{student.StudentID},{student.StudentName},{student.StudentAge},{student.Course}");
                 }
             }
         }
 
         /// <summary>
-        /// Method that reads all data in the student text file.
+        /// Reads all data in the student text file and updates the in-memory list of students.
         /// </summary>
         public List<Student> ReadStudentTextFile()
         {
-            files.Clear();
-            using (StreamReader reader = new StreamReader(filename))
+            studentTextList.Clear();
+            FileStream fs = new FileStream(filename, FileMode.OpenOrCreate);
+            using (StreamReader reader = new StreamReader(fs))
             {
                 string line;
                 while ((line = reader.ReadLine()) != null)
                 {
                     string[]  fields = line.Split(',');
                     Student st = new Student(int.Parse(fields[0]), fields[1], int.Parse(fields[2]), fields[3]);
-                    files.Add(st);
+                    studentTextList.Add(st);
                 }
             }
-            return files;
-        }
-
-
-
-        /// <summary>
-        /// Method to generate ammount of students in students.txt
-        /// </summary>
-        /// 
-        public void AmmountOfStudents()
-        { 
-            // Read students file
-            if(File.Exists(filename))
-            {
-                using(StreamReader reader = new StreamReader(filename))
-                {
-                    string txt;
-                    while ((txt = reader.ReadLine()) != null)
-                    {
-                        totalStudents++;
-                    }
-                }
-            }
+            return studentTextList;
         }
 
         /// <summary>
-        /// Method to generate Average Age of students in students.txt
+        /// Generates summary.txt
         /// </summary>
-        /// 
-        public void AverageStudentAge()
-        {
-            
-            string CurrentLine;
-            using(StreamReader reader = new StreamReader(filename))
-            {
-                reader.ReadLine();
-                while ((CurrentLine = reader.ReadLine()) != null)
-                {
-                    
-                    string[] Students = CurrentLine.Split(',');
-                    int age = int.Parse(Students[2]);
-                    averageStudentsAge += age;
-
-                }
-                averageStudentsAge = averageStudentsAge / totalStudents;
-            }
-        }
-
-        /// <summary>
-        /// Method to generate summary.txt
-        /// </summary>
-
         public void GenerateSummary()
         {
-            string summaryFilename = @"summary.txt";
             //Create File
             if (!File.Exists(summaryFilename))
             {
