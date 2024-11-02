@@ -94,5 +94,34 @@ namespace Prg282Project
                 }
             }
         }
+
+        /// <summary>
+        /// Overwrites file without the student corrolated to the id provided
+        /// Hence "delete"
+        /// </summary>
+        public void DeleteStudentInfo(string id)
+        {
+            List<string> newLines = new List<string>();
+
+            using (StreamReader SR = new StreamReader(filename))
+            {
+                string line;
+                while ((line = SR.ReadLine()) != null)
+                {
+                    if (!line.Contains(id)) //If line does not contain id, adds line to newLines list
+                    {
+                        newLines.Add(line);
+                    }
+                }
+            }
+
+            using (StreamWriter SW = new StreamWriter(filename))
+            {
+                foreach (string line in newLines)
+                {
+                    SW.WriteLine(line);
+                }
+            }
+        }
     }
 }
