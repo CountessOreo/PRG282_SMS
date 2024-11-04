@@ -128,7 +128,7 @@ namespace Prg282Project
 					{
 						MessageBox.Show("ID Does Not Exist. Please enter existing ID");
 					}
-					
+
 				}
 			}
 			catch (Exception ex)
@@ -265,6 +265,16 @@ namespace Prg282Project
 				}
 			}
 			return false;
+		}
+
+		/// <summary>
+		/// Opens text file
+		/// </summary>
+		/// <param name="sender"></param>
+		/// <param name="e"></param>
+		private void ViewStudentsButton_Click(object sender, EventArgs e)
+		{
+			fh.OpenFile();
 		}
 	}
 }

@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.IO;
 using System.DirectoryServices;
+using System.Diagnostics;
 
 namespace Prg282Project
 {
@@ -96,7 +97,7 @@ namespace Prg282Project
         }
 
         /// <summary>
-        /// Overwrites file without the student corrolated to the id provided
+        /// Overwrites file without the student correlated to the id provided
         /// Hence "delete"
         /// </summary>
         public void DeleteStudentInfo(string id)
@@ -122,6 +123,23 @@ namespace Prg282Project
                     SW.WriteLine(line);
                 }
             }
+        }
+
+        /// <summary>
+        /// Code starts a new process to open specified file uisng its default associated application
+        /// Utilizes ProcessStartInfo with the file path and setting UseShellExecute to true
+        /// Basically allowing the opening of a file as if it were double clicked in its folder
+        /// </summary>
+        public void OpenFile()
+        {
+            if (File.Exists(filename))
+            {
+                //Process.Start runs a new process on computer
+				Process.Start(new ProcessStartInfo(filename) //holds the configuration information for starting a process.
+				{ 
+                    UseShellExecute = true // UseShellExecute specifies whether to use the operating system shell to start the process. true = allows non-executable files to be opened with their associated application
+				});
+			}
         }
     }
 }

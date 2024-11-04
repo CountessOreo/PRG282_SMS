@@ -172,6 +172,7 @@ namespace Prg282Project
 			ViewStudentsButton.TabIndex = 3;
 			ViewStudentsButton.Text = "View";
 			ViewStudentsButton.UseVisualStyleBackColor = true;
+			ViewStudentsButton.Click += ViewStudentsButton_Click;
 			// 
 			// UpdateStudentButton
 			// 
