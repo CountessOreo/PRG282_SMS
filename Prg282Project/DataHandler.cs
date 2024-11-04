@@ -11,7 +11,6 @@ namespace Prg282Project
         public string filename = @"students.txt";
         public int totalStudents;
         public int averageStudentsAge;
-          
 
         /// <summary>
         /// Generates amount of students in students.txt

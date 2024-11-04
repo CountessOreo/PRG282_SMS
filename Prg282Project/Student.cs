@@ -8,13 +8,18 @@ using System.Xml.Linq;
 
 namespace Prg282Project
 {
+    /// <summary>
+    /// Student Class 
+    /// </summary>
     internal class Student
     {
+        // Fields
         int studentID;
         string studentName;
         int studentAge;
         string course;
 
+        // Constructors
         public Student() { }
 
         public Student(int studentID, string studentName, int studentAge, string course)
@@ -25,6 +30,7 @@ namespace Prg282Project
             this.course = course;
         }
 
+        //Properties
         public int StudentID { get => studentID; set => studentID = value; }
         public string StudentName { get => studentName; set => studentName = value; }
         public int StudentAge { get => studentAge; set => studentAge = value; }
