@@ -37,9 +37,9 @@ namespace Prg282Project
 
 		private void StudentEntryForm_Load(object sender, EventArgs e)
 		{
-			students = fh.CreateStudentTextFile();
+			students = fh.CreateStudentTextFile(); //Creates or reads data from students.txt
 			bs.DataSource = students;
-			dgvDisplay.DataSource = bs;
+			dgvDisplay.DataSource = bs; // Displays data to data grid view
 		}
 
 		private void GenerateSummaryButton_Click(object sender, EventArgs e)
@@ -139,7 +139,7 @@ namespace Prg282Project
 
 		/// <summary>
 		/// Selects student by clicking on their row
-		/// Fills corrolating text boxes with students info
+		/// Fills correlating text boxes with students info
 		/// </summary>
 		/// <param name="sender"></param>
 		/// <param name="e"></param>

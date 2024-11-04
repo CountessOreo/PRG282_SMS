@@ -19,7 +19,7 @@ namespace Prg282Project
         /// </summary>
         public List<Student> CreateStudentTextFile()
         {
-            if (!File.Exists(filename))
+            if (!File.Exists(filename)) // Creates file if it does not exsist
             {
                 List<Student> initialStudents = new List<Student>
                 {
@@ -36,7 +36,7 @@ namespace Prg282Project
                 };
                 WriteStudentsToFile(initialStudents);
             }
-            studentTextList = ReadStudentTextFile();
+            studentTextList = ReadStudentTextFile(); // Retrieves data from file
             return studentTextList;
         }
 
@@ -49,7 +49,7 @@ namespace Prg282Project
             {
                 foreach (Student student in students)
                 {
-                    writer.WriteLine($"{student.StudentID},{student.StudentName},{student.StudentAge},{student.Course}");
+                    writer.WriteLine($"{student.StudentID},{student.StudentName},{student.StudentAge},{student.Course}"); //Writes student data to the text file
                 }
             }
         }
@@ -66,7 +66,7 @@ namespace Prg282Project
                 string line;
                 while ((line = reader.ReadLine()) != null)
                 {
-                    string[]  fields = line.Split(',');
+                    string[]  fields = line.Split(','); //Splits data into a format to match a Student instance 
                     Student st = new Student(int.Parse(fields[0]), fields[1], int.Parse(fields[2]), fields[3]);
                     studentTextList.Add(st);
                 }
@@ -86,8 +86,6 @@ namespace Prg282Project
             }
             else
             {
-                
-
                 using(StreamWriter writer = new StreamWriter(summaryFilename))
                 {
                     writer.Write($"Amount of students: {dh.totalStudents}, Average Age: {dh.averageStudentsAge}, Date: {DateTime.Now:yyyy-MM-dd}");
@@ -96,7 +94,7 @@ namespace Prg282Project
         }
 
         /// <summary>
-        /// Overwrites file without the student corrolated to the id provided
+        /// Overwrites file without the student correlated to the id provided
         /// Hence "delete"
         /// </summary>
         public void DeleteStudentInfo(string id)
