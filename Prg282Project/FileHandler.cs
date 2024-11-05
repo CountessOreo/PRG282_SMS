@@ -151,7 +151,7 @@ namespace Prg282Project
             AdminLoginForm adminLoginForm = new AdminLoginForm();
             
 
-            string loginLocation = @"C:\\Users\\Paul-Dieter\\Desktop\\All\\Belgium Campus\\Year 2\\Asses\\PRG282\\ProjectForm\\Prg282Project\\Prg282Project\\bin\\Debug\\net6.0-windows\\login.txt";
+            string loginLocation = @"login.txt";
 
             using (StreamReader SR = new StreamReader(loginLocation))
             {
