@@ -8,8 +8,9 @@ namespace Prg282Project
         [STAThread]
         static void Main()
         {
+            Application.Run(new AdminLoginForm());
             ApplicationConfiguration.Initialize();
-            Application.Run(new StudentEntryForm());
+            Application.Run(new DataBaseForm());
             
         }
     }

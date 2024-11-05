@@ -13,7 +13,7 @@ using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace Prg282Project
 {
-	public partial class StudentEntryForm : Form
+	public partial class DataBaseForm : Form
 	{
 		public BindingSource bs = new BindingSource();
 		List<Student> students = new List<Student>();
@@ -21,7 +21,7 @@ namespace Prg282Project
 		FileHandler fh = new FileHandler();
 		int indexRow;
 
-		public StudentEntryForm()
+		public DataBaseForm()
 		{
 			InitializeComponent();
 

@@ -139,5 +139,35 @@ namespace Prg282Project
 				});
 			}
         }
+
+        ///<summary>
+        ///Admin login validation, provides access to the main form to add students.
+        /// </summary>
+       
+        public static void ValidateAdmin(string username, string password)
+        {
+            string[] login;
+            DataBaseForm dbForm = new DataBaseForm();
+            AdminLoginForm adminLoginForm = new AdminLoginForm();
+            
+
+            string loginLocation = @"C:\\Users\\Paul-Dieter\\Desktop\\All\\Belgium Campus\\Year 2\\Asses\\PRG282\\ProjectForm\\Prg282Project\\Prg282Project\\bin\\Debug\\net6.0-windows\\login.txt";
+
+            using (StreamReader SR = new StreamReader(loginLocation))
+            {
+                login = SR.ReadLine().Split(",");
+            }
+
+            if (username == login[0] && password == login[1])
+            {
+                adminLoginForm.Close();
+                dbForm.Show();
+            }
+            else
+            {
+                MessageBox.Show("Incorrect Details");
+            }
+        }
+
     }
 }
