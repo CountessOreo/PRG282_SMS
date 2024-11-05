@@ -15,8 +15,15 @@ namespace Prg282Project
         public AdminLoginForm()
         {
             InitializeComponent();
+           
             this.ControlBox = false; // Removes top exit, minimize and maximize
             this.StartPosition = FormStartPosition.CenterScreen;
+        }
+        private void AdminLoginForm_Load_1(object sender, EventArgs e)
+        {
+            FileHandler.CreateLoginTxt();
+            this.UserName.Text = ""; // Clear the username field
+            this.Password.Text = ""; // Clear the password field
         }
 
         private void ExitButton_Click(object sender, EventArgs e)

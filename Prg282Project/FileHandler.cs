@@ -139,11 +139,38 @@ namespace Prg282Project
 				});
 			}
         }
+        ///<summary>
+        ///Create admin login.txt with username and password.
+        /// </summary>
+        
+        public static void CreateLoginTxt()
+        {
+            string loginTxt = @"login.txt";
+
+            try
+            {
+                if (!File.Exists(loginTxt))
+                {
+                    using (FileStream fs = File.Create(loginTxt)) { }
+                }
+            } catch (Exception ex) {
+                MessageBox.Show($"Something went wrong :{ex}");
+            }
+
+
+            using(StreamWriter sw = new StreamWriter(loginTxt))
+            {
+                sw.Write("admin,12345");
+                sw.Dispose();
+                
+            }
+        }
+
 
         ///<summary>
         ///Admin login validation, provides access to the main form to add students.
         /// </summary>
-       
+
         public static void ValidateAdmin(string username, string password)
         {
             string[] login;
