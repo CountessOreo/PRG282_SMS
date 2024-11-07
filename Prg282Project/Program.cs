@@ -8,7 +8,8 @@ namespace Prg282Project
         [STAThread]
         static void Main()
         {
-            FileHandler.CreateLoginTxt();
+            
+
             Application.Run(new AdminLoginForm());
             ApplicationConfiguration.Initialize();
            

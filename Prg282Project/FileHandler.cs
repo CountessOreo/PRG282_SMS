@@ -175,7 +175,7 @@ namespace Prg282Project
         {
             string[] login;
             DataBaseForm dbForm = new DataBaseForm();
-            AdminLoginForm adminLoginForm = new AdminLoginForm();
+            
             
 
             string loginLocation = @"login.txt";
@@ -187,12 +187,12 @@ namespace Prg282Project
 
             if (username == login[0] && password == login[1])
             {
-                adminLoginForm.Close();
                 dbForm.Show();
             }
             else
             {
                 MessageBox.Show("Incorrect Details");
+                throw new Exception("Login Failed");
             }
         }
 

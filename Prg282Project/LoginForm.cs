@@ -37,7 +37,16 @@ namespace Prg282Project
             string userNameValidate = UserName.Text;
             string passwordValidate = Password.Text;
 
-            FileHandler.ValidateAdmin(userNameValidate, passwordValidate);
+            try
+            {
+                FileHandler.ValidateAdmin(userNameValidate, passwordValidate);
+                this.Hide();
+            }
+            catch (Exception ex)
+            {
+                
+            }
+            
         }
 
     }
