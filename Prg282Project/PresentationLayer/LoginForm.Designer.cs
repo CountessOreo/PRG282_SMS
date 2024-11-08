@@ -27,7 +27,7 @@
         /// the contents of this method with the code editor.
         /// </summary>
         private void InitializeComponent()
-        { 
+        {
             components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AdminLoginForm));
             label1 = new Label();
@@ -39,7 +39,7 @@
             ExitButton = new Button();
             imageList2 = new ImageList(components);
             pictureBox1 = new PictureBox();
-            AdminLoginButtom = new Button();
+            AdminLoginButton = new Button();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
@@ -131,16 +131,16 @@
             pictureBox1.TabIndex = 31;
             pictureBox1.TabStop = false;
             // 
-            // AdminLoginButtom
+            // AdminLoginButton
             // 
-            AdminLoginButtom.Cursor = Cursors.Hand;
-            AdminLoginButtom.Location = new Point(367, 423);
-            AdminLoginButtom.Name = "AdminLoginButtom";
-            AdminLoginButtom.Size = new Size(89, 22);
-            AdminLoginButtom.TabIndex = 32;
-            AdminLoginButtom.Text = "LOGIN";
-            AdminLoginButtom.UseVisualStyleBackColor = true;
-            AdminLoginButtom.Click += AdminLoginButtom_Click;
+            AdminLoginButton.Cursor = Cursors.Hand;
+            AdminLoginButton.Location = new Point(367, 423);
+            AdminLoginButton.Name = "AdminLoginButton";
+            AdminLoginButton.Size = new Size(89, 22);
+            AdminLoginButton.TabIndex = 32;
+            AdminLoginButton.Text = "LOGIN";
+            AdminLoginButton.UseVisualStyleBackColor = true;
+            AdminLoginButton.Click += AdminLoginButton_Click;
             // 
             // AdminLoginForm
             // 
@@ -149,7 +149,7 @@
             BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
             BackgroundImageLayout = ImageLayout.Stretch;
             ClientSize = new Size(547, 534);
-            Controls.Add(AdminLoginButtom);
+            Controls.Add(AdminLoginButton);
             Controls.Add(pictureBox1);
             Controls.Add(ExitButton);
             Controls.Add(label3);
@@ -159,7 +159,7 @@
             Controls.Add(label1);
             Name = "AdminLoginForm";
             Text = "Admin Login";
-
+            Load += AdminLoginForm_Load;
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ResumeLayout(false);
             PerformLayout();
@@ -176,6 +176,6 @@
         private Button ExitButton;
         private ImageList imageList2;
         private PictureBox pictureBox1;
-        private Button AdminLoginButtom;
+        private Button AdminLoginButton;
     }
 }

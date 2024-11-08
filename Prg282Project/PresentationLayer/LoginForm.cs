@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Prg282Project.DataLayer;
 
 namespace Prg282Project
 {
@@ -15,11 +16,12 @@ namespace Prg282Project
         public AdminLoginForm()
         {
             InitializeComponent();
-           
+
             this.ControlBox = false; // Removes top exit, minimize and maximize
             this.StartPosition = FormStartPosition.CenterScreen;
         }
-        private void AdminLoginForm_Load_1(object sender, EventArgs e)
+
+        private void AdminLoginForm_Load(object sender, EventArgs e)
         {
             FileHandler.CreateLoginTxt();
             this.UserName.Text = ""; // Clear the username field
@@ -29,10 +31,10 @@ namespace Prg282Project
         private void ExitButton_Click(object sender, EventArgs e)
         {
             Environment.Exit(0);
-            
+
         }
 
-        private void AdminLoginButtom_Click(object sender, EventArgs e)
+        private void AdminLoginButton_Click(object sender, EventArgs e)
         {
             string userNameValidate = UserName.Text;
             string passwordValidate = Password.Text;
@@ -44,10 +46,9 @@ namespace Prg282Project
             }
             catch (Exception ex)
             {
-                
+                MessageBox.Show("Login unsuccessful" + ex.Message);
             }
-            
-        }
 
+        }
     }
 }

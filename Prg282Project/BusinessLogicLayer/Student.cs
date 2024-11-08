@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using System.IO;
 using System.Xml.Linq;
 
-namespace Prg282Project
+namespace Prg282Project.BusinessLogicLayer
 {
     /// <summary>
     /// Student Class 

@@ -9,11 +9,13 @@ using System.Windows.Forms;
 using System.Drawing;
 using Microsoft.VisualBasic.Devices;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
+using Prg282Project.DataLayer;
+using Prg282Project.BusinessLogicLayer;
 
 
 namespace Prg282Project
 {
-	public partial class DataBaseForm : Form
+    public partial class DataBaseForm : Form
 	{
 		public BindingSource bs = new BindingSource();
 		List<Student> students = new List<Student>();
@@ -26,7 +28,7 @@ namespace Prg282Project
 			InitializeComponent();
 
 			this.ControlBox = false; // Removes top exit, minimize and maximize
-			this.StartPosition = FormStartPosition.CenterScreen;
+			this.StartPosition = FormStartPosition.CenterScreen; // centres form
 
 		}
 
@@ -53,8 +55,6 @@ namespace Prg282Project
 
 			//Generate Count in summary
 			fh.GenerateSummary(dh);
-
-
 
 			AverageAgeTextBox.Text = dh.averageStudentsAge.ToString();
 			StudentsInListTextBox.Text = dh.totalStudents.ToString();

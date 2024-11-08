@@ -6,8 +6,9 @@ using System.Threading.Tasks;
 using System.IO;
 using System.DirectoryServices;
 using System.Diagnostics;
+using Prg282Project.BusinessLogicLayer;
 
-namespace Prg282Project
+namespace Prg282Project.DataLayer
 {
     internal class FileHandler
     {
@@ -20,7 +21,7 @@ namespace Prg282Project
         /// </summary>
         public List<Student> CreateStudentTextFile()
         {
-            if (!File.Exists(filename)) // Creates file if it does not exsist
+            if (!File.Exists(filename)) // Creates file if it does not exist
             {
                 List<Student> initialStudents = new List<Student>
                 {
@@ -37,7 +38,7 @@ namespace Prg282Project
                 };
                 WriteStudentsToFile(initialStudents);
             }
-            studentTextList = ReadStudentTextFile(); // Retrieves data from file
+            studentTextList = ReadStudentTextFile(); // Retrieves data from file 
             return studentTextList;
         }
 
@@ -67,7 +68,7 @@ namespace Prg282Project
                 string line;
                 while ((line = reader.ReadLine()) != null)
                 {
-                    string[]  fields = line.Split(','); //Splits data into a format to match a Student instance 
+                    string[] fields = line.Split(','); //Splits data into a format to match a Student object 
                     Student st = new Student(int.Parse(fields[0]), fields[1], int.Parse(fields[2]), fields[3]);
                     studentTextList.Add(st);
                 }
@@ -87,7 +88,7 @@ namespace Prg282Project
             }
             else
             {
-                using(StreamWriter writer = new StreamWriter(summaryFilename))
+                using (StreamWriter writer = new StreamWriter(summaryFilename))
                 {
                     writer.Write($"Amount of students: {dh.totalStudents}, Average Age: {dh.averageStudentsAge}, Date: {DateTime.Now:yyyy-MM-dd}");
                 }
@@ -124,7 +125,7 @@ namespace Prg282Project
         }
 
         /// <summary>
-        /// Code starts a new process to open specified file uisng its default associated application
+        /// Code starts a new process to open specified file using its default associated application
         /// Utilizes ProcessStartInfo with the file path and setting UseShellExecute to true
         /// Basically allowing the opening of a file as if it were double clicked in its folder
         /// </summary>
@@ -133,16 +134,16 @@ namespace Prg282Project
             if (File.Exists(filename))
             {
                 //Process.Start runs a new process on computer
-				Process.Start(new ProcessStartInfo(filename) //holds the configuration information for starting a process.
-				{ 
+                Process.Start(new ProcessStartInfo(filename) //holds the configuration information for starting a process.
+                {
                     UseShellExecute = true // UseShellExecute specifies whether to use the operating system shell to start the process. true = allows non-executable files to be opened with their associated application
-				});
-			}
+                });
+            }
         }
+
         ///<summary>
         ///Create admin login.txt with username and password.
         /// </summary>
-        
         public static void CreateLoginTxt()
         {
             string loginTxt = @"login.txt";
@@ -153,16 +154,18 @@ namespace Prg282Project
                 {
                     using (FileStream fs = File.Create(loginTxt)) { }
                 }
-            } catch (Exception ex) {
+            }
+            catch (Exception ex)
+            {
                 MessageBox.Show($"Something went wrong :{ex}");
             }
 
 
-            using(StreamWriter sw = new StreamWriter(loginTxt))
+            using (StreamWriter sw = new StreamWriter(loginTxt))
             {
                 sw.Write("admin,12345");
                 sw.Dispose();
-                
+
             }
         }
 
@@ -170,13 +173,10 @@ namespace Prg282Project
         ///<summary>
         ///Admin login validation, provides access to the main form to add students.
         /// </summary>
-
         public static void ValidateAdmin(string username, string password)
         {
             string[] login;
             DataBaseForm dbForm = new DataBaseForm();
-            
-            
 
             string loginLocation = @"login.txt";
 
